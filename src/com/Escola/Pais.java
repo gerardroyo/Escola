@@ -1,6 +1,6 @@
 package com.Escola;
 
-public class ClassRoom {
+public class Pais {
 
     private String name;
     public String getName() {
@@ -10,12 +10,12 @@ public class ClassRoom {
         this.name = name;
     }
 
-    private Student[] StudentList;
-    public Student[] getStudentList() {
-        return StudentList;
+    private School[] schoolList;
+    public School[] getSchoolList() {
+        return schoolList;
     }
-    public void setStudentList(Student[] studentList) {
-        StudentList = studentList;
+    public void setSchoolList(School[] schoolList) {
+        this.schoolList = schoolList;
     }
 
     private int capacitat;
@@ -24,6 +24,10 @@ public class ClassRoom {
     }
     public void setCapacitat(int capacitat) {
         this.capacitat = capacitat;
-        StudentList = new Student[this.capacitat];
+        schoolList = new School[this.capacitat];
+    }
+
+    public void crearEscola() {
+        School school1 = new School();
     }
 }
