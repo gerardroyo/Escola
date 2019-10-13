@@ -26,9 +26,6 @@ public class Student {
         this.progress = progress;
     }
 
-    public Student(String name, String enrollment, int progress) {
-        this.name = name;
-        this.enrollment = enrollment;
-        this.progress = progress;
+    public Student() {
     }
 }

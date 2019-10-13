@@ -2,7 +2,7 @@ package com.Escola;
 
 public class Pais {
 
-    private String name;
+    /*private String name;
     public String getName() {
         return name;
     }
@@ -29,5 +29,5 @@ public class Pais {
 
     public void crearEscola() {
         School school1 = new School();
-    }
+    }*/
 }

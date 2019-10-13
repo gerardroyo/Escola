@@ -1,6 +1,10 @@
 package com.Escola;
 
+import java.util.Scanner;
+
 public class ClassRoom {
+
+    Scanner teclat = new Scanner(System.in);
 
     private String name;
     public String getName() {
@@ -26,4 +30,15 @@ public class ClassRoom {
         this.capacitat = capacitat;
         StudentList = new Student[this.capacitat];
     }
+
+    public ClassRoom() {
+    }
+
+    public void altaAula(){
+        System.out.println();
+        System.out.print("Posa-li un nom a l'aula: ");
+        this.name = teclat.nextLine();
+        System.out.println();
+    }
+
 }

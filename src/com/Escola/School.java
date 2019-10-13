@@ -1,13 +1,10 @@
 package com.Escola;
 
+import java.util.Scanner;
+
 public class School {
-    private String name;
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
+
+    Scanner teclat = new Scanner(System.in);
 
     private String schoolName;
     public String getSchoolName() {
@@ -34,9 +31,14 @@ public class School {
         classRoomList = new ClassRoom[this.capacitat];
     }
 
-    public School(String name, String schoolName, int capacitat) {
-        this.name = name;
-        this.schoolName = schoolName;
-        this.capacitat = capacitat;
+    public School() {
     }
+
+    public void altaEscola (){
+        System.out.println();
+        System.out.print("Posa-li un nom a l'escola: ");
+        this.schoolName = teclat.nextLine();
+        System.out.println();
+    }
+
 }
