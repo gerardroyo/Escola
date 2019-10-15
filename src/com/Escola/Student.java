@@ -1,6 +1,10 @@
 package com.Escola;
 
+import java.util.Scanner;
+
 public class Student {
+
+    Scanner teclat = new Scanner(System.in);
 
     private String name = "";
     public String getName() {
@@ -28,4 +32,17 @@ public class Student {
 
     public Student() {
     }
+
+    public void altaStudent (){
+        System.out.println();
+
+        System.out.print("Posa-li un nom a l'alumne: ");
+        this.name = teclat.nextLine();
+
+        System.out.print("Posa-li una matrícula a l'alumne: ");
+        this.enrollment = teclat.nextLine();
+
+        System.out.println();
+    }
+
 }
