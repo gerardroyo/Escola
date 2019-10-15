@@ -230,6 +230,17 @@ public class Main {
 
             System.out.println("0. Per modificar el Nom");
             System.out.println("1. Per modificar la Matrícula");
+            int menuModificar = teclat.nextInt();
+
+            switch (menuModificar) {
+                case 0:
+                    System.out.println("Introdueix el noou nom: ");
+                    String newName = teclat.next();
+                    break;
+                case 1:
+                    System.out.println("Introdueix la nova matrícula: ");
+                    break;
+            }
 
         }
 
