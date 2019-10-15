@@ -6,7 +6,7 @@ public class Student {
 
     Scanner teclat = new Scanner(System.in);
 
-    private String name = "";
+    private String name = " ";
     public String getName() {
         return name;
     }
@@ -14,7 +14,7 @@ public class Student {
         this.name = name;
     }
 
-    private String enrollment = "";
+    private String enrollment;
     public String getEnrollment() {
         return enrollment;
     }

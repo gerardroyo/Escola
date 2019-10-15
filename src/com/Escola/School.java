@@ -6,7 +6,7 @@ public class School {
 
     Scanner teclat = new Scanner(System.in);
 
-    private String schoolName;
+    private String schoolName = " ";
     public String getSchoolName() {
         return schoolName;
     }
