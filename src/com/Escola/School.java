@@ -6,7 +6,7 @@ public class School {
 
     Scanner teclat = new Scanner(System.in);
 
-    private String schoolName = " ";
+    private String schoolName = "Pia Mataro";
     public String getSchoolName() {
         return schoolName;
     }
@@ -33,12 +33,4 @@ public class School {
 
     public School() {
     }
-
-    public void altaEscola (){
-        System.out.println();
-        System.out.print("Posa-li un nom a l'escola: ");
-        this.schoolName = teclat.nextLine();
-        System.out.println();
-    }
-
 }

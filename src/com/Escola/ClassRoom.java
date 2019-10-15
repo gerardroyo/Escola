@@ -33,12 +33,4 @@ public class ClassRoom {
 
     public ClassRoom() {
     }
-
-    public void altaAula(){
-        System.out.println();
-        System.out.print("Posa-li un nom a l'aula: ");
-        this.name = teclat.nextLine();
-        System.out.println();
-    }
-
 }

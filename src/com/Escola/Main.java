@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static int capacitySchool = 1;
     private static int capacityRoom = 1;
     private static int capacityStudent = 30;
 
@@ -12,7 +11,7 @@ public class Main {
     private static int properaLliureRoom = 0;
     private static int properaLliureStudent = 0;
 
-    private static School school[] = new School[capacitySchool];
+    private static School school = new School();
     private static ClassRoom room[] = new ClassRoom[capacityRoom];
     private static Student student[] = new Student[capacityStudent];
 
@@ -26,21 +25,20 @@ public class Main {
 
 
         while (exit == false) {
-            System.out.println("0. Tancar programa ");
-            System.out.println("1. Donar alta una escola ");
+            System.out.println("1. Tancar programa ");
             System.out.println("2. Donar alta un aula ");
             System.out.println("3. Donar alta un alumne ");
             System.out.println("4. Donar de baixa un alumne ");
             System.out.println("5. Fer progresar un alumne/a ");
+            System.out.println("6. Modificar informació d'un alumne/a ");
+            System.out.println("7. Mostrar la informació d'un alumne/a ");
+            System.out.println("8. Mostrar la informació de l'escola ");
 
             menu = teclat.nextInt();
 
             switch (menu) {
-                case 0:
-                    exit = true;
-                    break;
                 case 1:
-                    CreateSchool();
+                    exit = true;
                     break;
                 case 2:
                     CreateAula();
@@ -57,25 +55,13 @@ public class Main {
                 case 6:
                     ModificarAlumne();
                     break;
+                case 7:
+                    MostrarInfoAlumne();
+                    break;
+                case 8:
+                    MostrarInfoEscola();
+                    break;
             }
-        }
-    }
-
-    public static void CreateSchool() {
-
-        String nameSchool;
-
-        while (properaLliureSchool < capacitySchool) {
-            System.out.println();
-
-            System.out.print("Posa-li un nom a l'escola: ");
-            nameSchool = teclat.next();
-            teclat.nextLine();
-            school[properaLliureSchool]= new School();
-            school[properaLliureSchool].setSchoolName(nameSchool);
-            properaLliureSchool++;
-
-            System.out.println();
         }
     }
 
@@ -86,11 +72,12 @@ public class Main {
         while (properaLliureRoom < capacityRoom) {
             System.out.print("Posa-li un nom a l'aula: ");
             nameRoom = teclat.next();
+            teclat.nextLine();
+
             room[properaLliureSchool]= new ClassRoom();
             room[properaLliureRoom].setName(nameRoom);
             properaLliureRoom++;
         }
-
     }
 
     public static void CreateStudent() {
@@ -101,6 +88,7 @@ public class Main {
         char mesAlumnes;
         boolean caracterIncorrecte = true;
         char mesAlumnesMayus = ' ';
+        int escollirAula;
 
         while (properaLliureStudent < capacityStudent && exitStudent == false) {
 
@@ -113,8 +101,17 @@ public class Main {
             teclat.nextLine();
 
             student[properaLliureStudent]= new Student();
+
+            System.out.println("En quina aula vols introduir aques alumne/a? 0. " + room[0].getName());
+            escollirAula = teclat.nextInt();
+            teclat.nextLine();
+            if (escollirAula == 0)
+            student[properaLliureStudent].setRoomOnEstic(room[0].getName());
+            student[properaLliureStudent].setSchoolOnEstic(school.getSchoolName());
+
             student[properaLliureStudent].setName(nameStudent);
             student[properaLliureStudent].setEnrollment(enrollmentStudent);
+
             properaLliureStudent++;
 
             System.out.println("Vols matricular a més alumnes? Sí(s)/No(n)");
@@ -221,8 +218,8 @@ public class Main {
 
         for (int i = 0; i < capacityStudent; i++) {
             if (student[i].getEnrollment().equals(enrollmentStudent) && student[i] != null) {
-                System.out.println("Nom:" + student[i].getName());
-                System.out.println("Matrícula:" + student[i].getEnrollment());
+                System.out.println("Nom: " + student[i].getName());
+                System.out.println("Matrícula: " + student[i].getEnrollment());
                 i = capacityStudent;
             } else {
                 System.out.println("L'alumne no existeix");
@@ -234,16 +231,54 @@ public class Main {
 
             switch (menuModificar) {
                 case 0:
-                    System.out.println("Introdueix el noou nom: ");
+                    System.out.println("Introdueix el nou nom: ");
                     String newName = teclat.next();
+                    teclat.nextLine();
+
+                    student[i].setName(newName);
+                    System.out.println("El nom s'ha canviat correctament a " + newName + " !");
                     break;
                 case 1:
                     System.out.println("Introdueix la nova matrícula: ");
+                    String newEnrollment = teclat.next();
+                    teclat.nextLine();
+
+                    student[i].setEnrollment(newEnrollment);
+                    System.out.println("La matrícula s'ha canviat correctament a " + newEnrollment + " !");
                     break;
             }
+        }
+    }
 
+    public static void MostrarInfoAlumne() {
+        String enrollmentStudent;
+
+        System.out.print("Intodueix la matrícula de l'alumne/a per mostrar la seva informació: ");
+        enrollmentStudent = teclat.next();
+        teclat.nextLine();
+
+        for (int i = 0; i < capacityStudent; i++) {
+            if (student[i].getEnrollment().equals(enrollmentStudent) && student[i] != null) {
+                System.out.println("Nom: " + student[i].getName());
+                System.out.println("Matrícula: " + student[i].getEnrollment());
+                System.out.println("Aula: " + student[i].getRoomOnEstic());
+                System.out.println("Escola: " + student[i].getSchoolOnEstic());
+                i = capacityStudent;
+            } else {
+                System.out.println("L'alumne no existeix");
+            }
         }
 
+    }
+
+    public static void MostrarInfoEscola() {
+
+        for (int i = 0; i < capacityStudent; i++) {
+            System.out.println("Nom: " + student[i].getName());
+            System.out.println("Matrícula: " + student[i].getEnrollment());
+            System.out.println("Aula: " + student[i].getRoomOnEstic());
+            System.out.println("Escola: " + student[i].getSchoolOnEstic());
+        }
 
     }
 

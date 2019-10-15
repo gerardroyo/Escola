@@ -30,19 +30,14 @@ public class Student {
         this.progress = progress;
     }
 
+    private String schoolOnEstic = " ";
+    public String getSchoolOnEstic() { return schoolOnEstic; }
+    public void setSchoolOnEstic(String schoolOnEstic) { this.schoolOnEstic = schoolOnEstic; }
+
+    private String roomOnEstic = " ";
+    public String getRoomOnEstic() { return roomOnEstic; }
+    public void setRoomOnEstic(String roomOnEstic) { this.roomOnEstic = roomOnEstic; }
+
     public Student() {
     }
-
-    public void altaStudent (){
-        System.out.println();
-
-        System.out.print("Posa-li un nom a l'alumne: ");
-        this.name = teclat.nextLine();
-
-        System.out.print("Posa-li una matrícula a l'alumne: ");
-        this.enrollment = teclat.nextLine();
-
-        System.out.println();
-    }
-
 }
