@@ -149,7 +149,6 @@ public class Main {
                     student[i] = null;
                     i = capacityStudent;
                 } else {
-                    System.out.println("L'alumne no existeix");
                 }
             }
 
@@ -187,24 +186,26 @@ public class Main {
         teclat.nextLine();
 
         for (int i = 0; i < capacityStudent; i++) {
-            if (student[i].getEnrollment().equals(enrollmentStudent) && student[i] != null) {
-                if (progressStudent >= 1 && progressStudent <= 5 && student[i].getProgress() + progressStudent <= 10) {
-                    student[i].setProgress(student[i].getProgress() + progressStudent);
-                } else if (!(student[i].getProgress() + progressStudent <= 10)){
-                    System.out.println("El progrés no pot sumar més de 10!");
-                } else if (!(progressStudent >= 1 && progressStudent <= 5)) {
-                    System.out.println("El progrés a introduir ha d'estar entre 1 i 5!");
+            if(student[i] != null) {
+                if (student[i].getEnrollment().equals(enrollmentStudent)) {
+                    if (progressStudent >= 1 && progressStudent <= 5 && student[i].getProgress() + progressStudent <= 10) {
+                        student[i].setProgress(student[i].getProgress() + progressStudent);
+                        if (student[i].getProgress() == 10) {
+                            System.out.println("S'ha donat de baixa l'alumne " + student[i].getName() + " per arribar al máxim progress (10)");
+                            student[i] = null;
+                        }
+                    } else if (!(student[i].getProgress() + progressStudent <= 10)) {
+                        System.out.println("El progrés no pot sumar més de 10!");
+                    } else if (!(progressStudent >= 1 && progressStudent <= 5)) {
+                        System.out.println("El progrés a introduir ha d'estar entre 1 i 5!");
+                    }
+                    i = capacityStudent;
                 }
-
-                i = capacityStudent;
             } else {
                 System.out.println("L'alumne no existeix");
             }
 
-            if (student[i].getProgress() == 10) {
-                student[i] = null;
-                System.out.println("S'ha donat de baixa l'alumne " + student[i].getName());
-            }
+
         }
     }
 
@@ -261,6 +262,7 @@ public class Main {
             if (student[i].getEnrollment().equals(enrollmentStudent) && student[i] != null) {
                 System.out.println("Nom: " + student[i].getName());
                 System.out.println("Matrícula: " + student[i].getEnrollment());
+                System.out.println("Progress: " + student[i].getProgress());
                 System.out.println("Aula: " + student[i].getRoomOnEstic());
                 System.out.println("Escola: " + student[i].getSchoolOnEstic());
                 i = capacityStudent;
@@ -273,11 +275,23 @@ public class Main {
 
     public static void MostrarInfoEscola() {
 
+        System.out.println("Nom de l'escola: " + school.getSchoolName());
+
+        for (int j = 0; j < capacityRoom; j++) {
+            System.out.println("Nom aula: " + room[j].getName());
+        }
+
         for (int i = 0; i < capacityStudent; i++) {
-            System.out.println("Nom: " + student[i].getName());
-            System.out.println("Matrícula: " + student[i].getEnrollment());
-            System.out.println("Aula: " + student[i].getRoomOnEstic());
-            System.out.println("Escola: " + student[i].getSchoolOnEstic());
+            if (student[i] == null) {
+                i = capacityStudent;
+            } else {
+                System.out.println("ALUMNE: " + i);
+                System.out.println("Nom de l'alumne: " + student[i].getName());
+                System.out.println("Matrícula alumne: " + student[i].getEnrollment());
+                System.out.println("Aula alumne: " + student[i].getRoomOnEstic());
+                System.out.println("Escola alumne: " + student[i].getSchoolOnEstic());
+                System.out.println("______________________________________________________________");
+            }
         }
 
     }
